@@ -3,9 +3,10 @@ FROM node:16
 WORKDIR /usr/src/app
 
 COPY package*.json ./
-COPY . .
 
 RUN npm install
+
+COPY . .
 
 RUN curl -o /usr/local/bin/wait-for-it.sh https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh && \
     chmod +x /usr/local/bin/wait-for-it.sh
