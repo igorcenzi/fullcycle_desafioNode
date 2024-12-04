@@ -16,6 +16,17 @@ const connection = mysql.createConnection(config);
 connection.connect((err) => {
   if (err) throw err;
   console.log("Conectado ao banco de dados!");
+
+  const createTableQuery = `
+    CREATE TABLE IF NOT EXISTS people (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      name VARCHAR(255) NOT NULL
+    );
+  `;
+
+  connection.query(createTableQuery, (err) => {
+    if (err) throw err;
+  });
 });
 
 app.get("/", (req, res) => {
